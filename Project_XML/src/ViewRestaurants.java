@@ -30,6 +30,8 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
+
+
 public class ViewRestaurants {
 	
 	public static void main(String[] args) {
@@ -37,7 +39,7 @@ public class ViewRestaurants {
         try {
         	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();

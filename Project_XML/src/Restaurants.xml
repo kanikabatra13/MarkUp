@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Restaurants>
+   
+        <Restaurant Cuisine="Mexican" address="6730 N Northwest Hwy Chicago IL 60631" href="http://www.donjuanschicago.com/" id="1" name="Don Juan Restaurante" price="$$" rating="***" typeofrestaurant="Free Wifi Takes Reservation">
+        </Restaurant>
+      
+    
+        <Restaurant Cuisine="chinese" address="7230 N Harlem Ave Chicago IL 60631" href="http://www.chopstickexpresschicago.com/" id="2" name="Chopstick Express" price="$$$" rating="***" typeofrestaurant="Free Wifi Takes Reservation">
+        
+        </Restaurant>
+   
+<Restaurant name="Test Restauarant"/>
+<Restaurant address="addr" cuisine="cuisn" href="website" name="restName" price="price" rating="rating" typeofrestaurant="typ"/>
+<Restaurant address="Chicago" cuisine="Indian" href="www.example.com" name="Kanika Test" price="$$" rating="***" typeofrestaurant="Dining"/>
+<Restaurant address="Catalpa" cuisine="abcd" href="Website" name="test2" price="$$$$" rating="**" typeofrestaurant="fun place"/>
+</Restaurants>
