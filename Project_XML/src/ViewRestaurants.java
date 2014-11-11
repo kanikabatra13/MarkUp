@@ -50,7 +50,7 @@ public class ViewRestaurants {
             
             //NodeList Variables to get the Element names.
             
-            NodeList nList = restdata.getElementsByTagName("Restaurandetails");
+            NodeList nList = restdata.getElementsByTagName("Restaurant");
             Node nNode;
             
             //NodeList nodeListPub = HW3.getElementsByTagName("published"); 
