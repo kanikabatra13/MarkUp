@@ -73,7 +73,7 @@ public class InsertRestaurant {
 		      
         // creating a JPanel object.    
 		      JPanel myPanel = new JPanel();
-		      myPanel.setLayout(new GridLayout(10, 3));
+		      myPanel.setLayout(new GridLayout(7,4));
 		      myPanel.add(new JLabel("Restaurant name"));
 		      myPanel.add(restname);
 		      myPanel.add(new JLabel("Cuisine"));
@@ -95,18 +95,20 @@ public class InsertRestaurant {
 		      int result = JOptionPane.showConfirmDialog(null, myPanel, 
 		               "Please Enter the values for creating a new entry for Restaurant", JOptionPane.OK_CANCEL_OPTION);
 		      
-		      String tckt_cat, userName, tcktDescp, assignedTo;
+		      String restName, addr, cuisn, pricetext, url, typ, ratingtext;
 		      // if OK button is pressed the details entered are processed.
 		      if (result == JOptionPane.OK_OPTION)
 		        {
 		    	 //getting values inputed by the user into variables
 		    	  
-		    	   tckt_cat = tcktCat.getText();
-		    	   userId = Integer.getText());
-			       userName = uName.getText();
-			       tcktDescp = tcktDesc.getText();
-			       assignedTo = assignee.getText() ;
-		    	   String status = "OPEN";
+		    	   restName = restname.getText();
+		    	   addr = address.getText();
+			       cuisn = cuisine.getText();
+			       pricetext = price.getText();
+			       ratingtext = rating.getText() ;
+			       typ = typeof.getText();
+			       url = website.getText();
+		    	   String id = "10";
 		    	  
 		     	    
             
@@ -117,14 +119,22 @@ public class InsertRestaurant {
             Element restaurant = restdata.createElement("Restaurant");
             root.appendChild(restaurant);
             
-            restaurant.setAttribute("name", "Test Restauarant");
+            restaurant.setAttribute("name", restName);
+            restaurant.setAttribute("address", addr);
+            restaurant.setAttribute("cuisine", cuisn);
+            restaurant.setAttribute("href", url);
+            restaurant.setAttribute("price", pricetext);
+            restaurant.setAttribute("rating", ratingtext);
+            restaurant.setAttribute("typeofrestaurant", typ);
+            
             
             System.out.println(getXmlString(restdata));
-            
+            JOptionPane.showMessageDialog(null,"Restauarant Entry has been addded to XML File ");
             
           //xpath variable
             XPath xPath =  XPathFactory.newInstance().newXPath();
             
+        }
         }
            
             
