@@ -45,7 +45,7 @@ public class ViewRestaurants {
         try {
         	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
