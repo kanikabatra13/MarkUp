@@ -1,8 +1,11 @@
+import java.awt.Color;
 import java.awt.Graphics;   
 
 import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -39,7 +45,7 @@ public class ViewRestaurants {
         try {
         	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -92,6 +98,12 @@ public class ViewRestaurants {
                     
         	}
         	
+
+
+        	 UIManager UI = new UIManager();
+        	             UI.put("OptionPane.background", Color.BLUE);
+        	             UI.put("OptionPane.messagebackground", Color.BLUE);
+        	             UI.put("Panel.background", Color.BLUE);
         	
         	JList list = new JList(items);
             JPanel panel = new JPanel();
