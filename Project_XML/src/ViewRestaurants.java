@@ -21,6 +21,8 @@ import java.util.List;
 
 
 
+
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -36,6 +38,8 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
+import comp336.xml.Restauarnt.xml;
+
 
 
 public class ViewRestaurants {
@@ -45,7 +49,7 @@ public class ViewRestaurants {
         try {
         	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
