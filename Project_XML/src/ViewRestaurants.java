@@ -1,28 +1,19 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;   
 
 import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-
-
-
-
-
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -39,17 +30,24 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 
-
-
-
 public class ViewRestaurants {
 	
 	public static void main(String[] args) {
+		
+		new ViewRestaurants();
+		
+	}
+	
+		
+public ViewRestaurants(){
+			
+		
 		 
         try {
         	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("Restaurants.xml"));
+          
+            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -62,7 +60,7 @@ public class ViewRestaurants {
             
             //NodeList Variables to get the Element names.
             
-            NodeList nList = restdata.getElementsByTagName("Restaurant");
+            NodeList nList = restdata.getElementsByTagName("RestDetails");
             Node nNode;
             
             //NodeList nodeListPub = HW3.getElementsByTagName("published"); 
@@ -91,29 +89,46 @@ public class ViewRestaurants {
          
         			Element eElement = (Element) nNode;
         			
-        			name = eElement.getAttribute("name");
-        			address = eElement.getAttribute("address");
+        			name = eElement.getAttribute("Name");
+        			address = eElement.getAttribute("Address");
         			cuisine = eElement.getAttribute("Cuisine");
-        			price = eElement.getAttribute("price");
-        			rating = eElement.getAttribute("rating");
+        			price = eElement.getAttribute("Price");
+        			rating = eElement.getAttribute("Rating");
         			website = eElement.getAttribute("href");
         			
-        			items[temp] = "Name:"+name+"\n Address:"+address+"\n Cuisine:"+cuisine;
+        			 String pt1 = "<html><body Name:'";
+                     String pt2 =
+                         "" +
+                         "<p>Name: " + name +
+                         "<p>Address: "+ address +
+                         "<p>Cusine: " + cuisine +
+                         "<p><br>";
+                         
+                     
+        			//items[temp] = "Name:"+name+ "\n Address:"+address+"\n Cuisine:"+cuisine;
+        			items[temp] =  pt1 + pt2;
                     
         	}
         	
-
-
-        	 UIManager UI = new UIManager();
-        	             UI.put("OptionPane.background", Color.BLUE);
-        	             UI.put("OptionPane.messagebackground", Color.BLUE);
-        	             UI.put("Panel.background", Color.BLUE);
         	
+        	              UIManager UI = new UIManager();
+        	            UI.put("OptionPane.background", Color.BLUE);
+        	             UI.put("OptionPane.messagebackground", Color.BLUE);
+        	            UI.put("Panel.background", Color.BLUE);
+        	             UIManager.put("OptionPane.background",new ColorUIResource(255,0,0));
+        	             UIManager.put("Panel.background",new ColorUIResource(255,0,0));
+        	             
+        	             
+        	             
         	JList list = new JList(items);
             JPanel panel = new JPanel();
             panel.add(list);
+            
             JOptionPane.showMessageDialog(null, panel);
-        
+            panel.setPreferredSize(new Dimension(480, 150));
+		    panel.setBorder(null);
+		   
+            
         }
         
         catch (FileNotFoundException e) {
@@ -125,8 +140,8 @@ public class ViewRestaurants {
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
-        /*catch (XPathExpressionException e) {
-            e.printStackTrace(); 
-        }  */
+        
+		
+        
 	}
 }
