@@ -94,17 +94,19 @@ public class InsertRestaurant {
 		      JTextField price = new JTextField(10);
 		      JTextField rating = new JTextField(10);
 		      JTextField review = new JTextField(10);
-		      
+		      JTextField contact = new JTextField(10);
 		      
         // creating a JPanel object.    
 		      JPanel myPanel = new JPanel();
-		      myPanel.setLayout(new GridLayout(8,4));
+		      myPanel.setLayout(new GridLayout(9,4));
 		      myPanel.add(new JLabel("Restaurant name"));
 		      myPanel.add(restname);
 		      myPanel.add(new JLabel("Cuisine"));
 		      myPanel.add(cuisine);
 		      myPanel.add(new JLabel("Price"));
 		      myPanel.add(price);
+		      myPanel.add(new JLabel("Contact"));
+		      myPanel.add(contact);
 		      myPanel.add(new JLabel("Address"));
 		      myPanel.add(address);
 		      myPanel.add(new JLabel("Website"));
@@ -124,7 +126,7 @@ public class InsertRestaurant {
 		      int result = JOptionPane.showConfirmDialog(null, myPanel, 
 		               "Please Enter the values for creating a new entry for Restaurant", JOptionPane.OK_CANCEL_OPTION);
 		      
-		      String restName, addr, cuisn, pricetext, url, typ, ratingtext, reviewtext;
+		      String restName, addr, cuisn, pricetext, url, typ, ratingtext, reviewtext, phno;
 		      // if OK button is pressed the details entered are processed.
 		      if (result == JOptionPane.OK_OPTION)
 		        {
@@ -138,6 +140,7 @@ public class InsertRestaurant {
 			       typ = typeof.getText();
 			       url = website.getText();
 			       reviewtext = review.getText();
+			       phno = contact.getText();
 		    	        
            
             Element root = restdata.getDocumentElement();
@@ -164,6 +167,7 @@ public class InsertRestaurant {
             restDetails.setAttribute("Rating", ratingtext);
             restDetails.setAttribute("typeofrestaurant", typ);
             restDetails.setAttribute("ID", newID);
+            restDetails.setAttribute("Contact", phno);
             reviewEl.setTextContent(reviewtext);
             
             
