@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.Graphics;   
 import java.awt.GridLayout;
 
@@ -42,7 +43,9 @@ import org.xml.sax.SAXException;
 
 public class InsertRestaurant {
 	
-	public static void main(String[] args) {
+	public InsertRestaurant()
+	{
+	
 		 
         try {
         	
@@ -60,6 +63,27 @@ public class InsertRestaurant {
             
             restdata.getDocumentElement().normalize();
             
+            NodeList nList = restdata.getElementsByTagName("RestDetails");
+            Node nNode;
+            Element element;
+            List<Integer> ids = new ArrayList<Integer>();
+            int id;
+            
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                
+       		 nNode = nList.item(temp);
+       		Element eElement = (Element) nNode;
+       		 id = Integer.parseInt(eElement.getAttribute("ID"));
+       		 ids.add(id);
+       		 
+            }
+            
+            int maxID;
+            String newID;
+            
+            maxID = Collections.max(ids) + 1;
+            newID = String.valueOf(maxID);
+            
           //setting up fields and labels 
 		      JTextField restname = new JTextField(50);
 		      restname.setBounds(70,25,100,30);
@@ -69,11 +93,12 @@ public class InsertRestaurant {
 		      JTextField typeof = new JTextField(50);
 		      JTextField price = new JTextField(10);
 		      JTextField rating = new JTextField(10);
+		      JTextField review = new JTextField(10);
 		      
 		      
         // creating a JPanel object.    
 		      JPanel myPanel = new JPanel();
-		      myPanel.setLayout(new GridLayout(7,4));
+		      myPanel.setLayout(new GridLayout(8,4));
 		      myPanel.add(new JLabel("Restaurant name"));
 		      myPanel.add(restname);
 		      myPanel.add(new JLabel("Cuisine"));
@@ -88,14 +113,18 @@ public class InsertRestaurant {
 		      myPanel.add(typeof);
 		      myPanel.add(new JLabel("Rating"));
 		      myPanel.add(rating);
-		      
+		      myPanel.add(new JLabel("Review"));
+		      myPanel.add(review);
+		  
+		      myPanel.setPreferredSize(new Dimension(480, 150));
+		      myPanel.setBorder(null);
 		      
 		      
 		 // prompting the user to enter ticket details     
 		      int result = JOptionPane.showConfirmDialog(null, myPanel, 
 		               "Please Enter the values for creating a new entry for Restaurant", JOptionPane.OK_CANCEL_OPTION);
 		      
-		      String restName, addr, cuisn, pricetext, url, typ, ratingtext;
+		      String restName, addr, cuisn, pricetext, url, typ, ratingtext, reviewtext;
 		      // if OK button is pressed the details entered are processed.
 		      if (result == JOptionPane.OK_OPTION)
 		        {
@@ -108,24 +137,34 @@ public class InsertRestaurant {
 			       ratingtext = rating.getText() ;
 			       typ = typeof.getText();
 			       url = website.getText();
-		    	   String id = "10";
-		    	  
-		     	    
-            
-            
-            Element element;
+			       reviewtext = review.getText();
+		    	        
+           
             Element root = restdata.getDocumentElement();
             
             Element restaurant = restdata.createElement("Restaurant");
             root.appendChild(restaurant);
             
-            restaurant.setAttribute("name", restName);
-            restaurant.setAttribute("address", addr);
-            restaurant.setAttribute("cuisine", cuisn);
-            restaurant.setAttribute("href", url);
-            restaurant.setAttribute("price", pricetext);
-            restaurant.setAttribute("rating", ratingtext);
-            restaurant.setAttribute("typeofrestaurant", typ);
+            Element restDetails = restdata.createElement("RestDetails");
+            restaurant.appendChild(restDetails);
+            
+            Element reviews = restdata.createElement("Reviews");
+            restaurant.appendChild(reviews);
+            
+            Element reviewEl = restdata.createElement("review");
+            reviews.appendChild(reviewEl);
+            
+            
+            
+            restDetails.setAttribute("Name", restName);
+            restDetails.setAttribute("Address", addr);
+            restDetails.setAttribute("Cuisine", cuisn);
+            restDetails.setAttribute("href", url);
+            restDetails.setAttribute("Price", pricetext);
+            restDetails.setAttribute("Rating", ratingtext);
+            restDetails.setAttribute("typeofrestaurant", typ);
+            restDetails.setAttribute("ID", newID);
+            reviewEl.setTextContent(reviewtext);
             
             
             System.out.println(getXmlString(restdata));
@@ -136,9 +175,7 @@ public class InsertRestaurant {
             
         }
         }
-           
-            
-        
+                  
         
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -153,6 +190,12 @@ public class InsertRestaurant {
             e.printStackTrace(); 
         }  */
 	}
+	
+	public static void main(String[] args) {
+		
+		new InsertRestaurant();
+	}
+	
 	
 	 private static String getXmlString(Document document)
      {
