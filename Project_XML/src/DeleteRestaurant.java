@@ -52,7 +52,7 @@ public class DeleteRestaurant {
         	
         	// Taking the xml file as input.
           
-            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -75,7 +75,7 @@ public class DeleteRestaurant {
             
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 
-       		 nNode = nList.item(temp);
+       	    nNode = nList.item(temp);
        		Element eElement = (Element) nNode;
        		if(eElement.getAttribute("ID").equals(RestID))
        		{
@@ -88,11 +88,14 @@ public class DeleteRestaurant {
             }
             
             if(flag == 1){
-            	 System.out.println(getXmlString(restdata));
-            	JOptionPane.showMessageDialog(null,"Restaurant has been Deleted from the xml");
+            	    System.out.println(getXmlString(restdata));
+            	    UIManager.put("OptionPane.minimumSize",new Dimension(480, 150)); 
+            		UIManager.put("OptionPane.background",new ColorUIResource(127, 127, 255));
+            		UIManager.put("Panel.background",new ColorUIResource(127, 127, 255));
+            	    JOptionPane.showMessageDialog(null,"Restaurant has been Deleted from the xml");
             }
             else
-            	JOptionPane.showMessageDialog(null,"ID entered does not match ant Restaurant in the list");	
+            	JOptionPane.showMessageDialog(null,"ID entered does not match any Restaurant in the list");	
             
         }
         
@@ -116,7 +119,7 @@ public class DeleteRestaurant {
       TransformerFactory transFactory = TransformerFactory.newInstance();
       Transformer transformer;
       StringWriter sw = new StringWriter(); 
-      File updatexml = new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml");
+      File updatexml = new File("C:/Users/SAMARTH/Desktop/Restaurants.xml");
       try 
       {
        transformer = transFactory.newTransformer();

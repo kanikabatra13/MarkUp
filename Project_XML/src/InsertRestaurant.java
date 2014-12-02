@@ -45,20 +45,16 @@ public class InsertRestaurant {
 	
 	public InsertRestaurant()
 	{
-	
 		 
         try {
         	
-        	
-        	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
              
             DocumentBuilder builder =  builderFactory.newDocumentBuilder();
-             
             Document restdata = builder.parse(file);
             
             restdata.getDocumentElement().normalize();
@@ -72,7 +68,7 @@ public class InsertRestaurant {
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 
        		 nNode = nList.item(temp);
-       		Element eElement = (Element) nNode;
+       		 Element eElement = (Element) nNode;
        		 id = Integer.parseInt(eElement.getAttribute("ID"));
        		 ids.add(id);
        		 
@@ -122,9 +118,9 @@ public class InsertRestaurant {
 		      myPanel.setBorder(null);
 		      
 		      
-		 // prompting the user to enter ticket details     
+		      // prompting the user to enter restaurant details     
 		      int result = JOptionPane.showConfirmDialog(null, myPanel, 
-		               "Please Enter the values for creating a new entry for Restaurant", JOptionPane.OK_CANCEL_OPTION);
+		               "Creating a new entry for Restaurant", JOptionPane.OK_CANCEL_OPTION);
 		      
 		      String restName, addr, cuisn, pricetext, url, typ, ratingtext, reviewtext, phno;
 		      // if OK button is pressed the details entered are processed.
@@ -174,12 +170,11 @@ public class InsertRestaurant {
             System.out.println(getXmlString(restdata));
             JOptionPane.showMessageDialog(null,"Restauarant Entry has been addded to XML File ");
             
-          //xpath variable
+            //xpath variable
             XPath xPath =  XPathFactory.newInstance().newXPath();
             
-        }
-        }
-                  
+           }
+        }       
         
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -206,7 +201,7 @@ public class InsertRestaurant {
       TransformerFactory transFactory = TransformerFactory.newInstance();
       Transformer transformer;
       StringWriter sw = new StringWriter(); 
-      File updatexml = new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml");
+      File updatexml = new File("C:/Users/SAMARTH/Desktop/Restaurants.xml");
       try 
       {
        transformer = transFactory.newTransformer();

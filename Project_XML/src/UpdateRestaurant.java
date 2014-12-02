@@ -52,7 +52,7 @@ public UpdateRestaurant()
     	
     	// Taking the xml file as input.
       
-        FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+        FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
              
         //setting up DOM elements for XML file
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -105,13 +105,8 @@ public UpdateRestaurant()
                 
     	}
     	
-    	
-    	              UIManager UI = new UIManager();
-    	            UI.put("OptionPane.background", Color.BLUE);
-    	             UI.put("OptionPane.messagebackground", Color.BLUE);
-    	            UI.put("Panel.background", Color.BLUE);
-    	             UIManager.put("OptionPane.background",new ColorUIResource(255,0,0));
-    	             UIManager.put("Panel.background",new ColorUIResource(255,0,0));
+    	            UIManager.put("OptionPane.background",new ColorUIResource(127, 127, 255));
+    	            UIManager.put("Panel.background",new ColorUIResource(127, 127, 255));
     	             
     	             
     	             
@@ -123,7 +118,8 @@ public UpdateRestaurant()
         
         JFrame frame = new JFrame("Input Dialog Example 3");
         
-        String response = (String) JOptionPane.showInputDialog(frame, "Please Select the Restaurant from the list you wish to Update", "Update Restaurant", JOptionPane.QUESTION_MESSAGE,null,items,items[0]);
+        String response = (String) JOptionPane.showInputDialog(frame, "Please Select the Restaurant from the list you wish to Update",
+        		"Update Restaurant", JOptionPane.QUESTION_MESSAGE,null,items,items[0]);
         panel.setPreferredSize(new Dimension(480, 150));
 	    panel.setBorder(null);
 	   
@@ -165,37 +161,37 @@ public UpdateRestaurant()
 	               nodeAttr.setTextContent(restName);
 	               getXmlString(restdata);
 	               JOptionPane.showMessageDialog(null,"Name has been updated in the XML File");
-	                break;
+	                   break;
 				case 2: 
-					  contactNo  = JOptionPane.showInputDialog("Please Enter the new Contact No for the Restaurant");	
-		               nodeAttr = attr.getNamedItem("Contact");
-		               nodeAttr.setTextContent(contactNo);
-		               getXmlString(restdata);
-		               JOptionPane.showMessageDialog(null,"Contact information has been updated in the XML File");
+				   contactNo  = JOptionPane.showInputDialog("Please Enter the new Contact No for the Restaurant");	
+		           nodeAttr = attr.getNamedItem("Contact");
+		           nodeAttr.setTextContent(contactNo);
+		           getXmlString(restdata);
+	               JOptionPane.showMessageDialog(null,"Contact information has been updated in the XML File");
 		                break;
 		                
 				case 3: 
-					  restCuisine  = JOptionPane.showInputDialog("Please Update the Cuisine for the Restaurant");	
-		               nodeAttr = attr.getNamedItem("Cuisine");
-		               nodeAttr.setTextContent(restCuisine);
-		               getXmlString(restdata);
-		               JOptionPane.showMessageDialog(null,"Cuisine has been updated in the XML File");
+					 restCuisine  = JOptionPane.showInputDialog("Please Update the Cuisine for the Restaurant");	
+		             nodeAttr = attr.getNamedItem("Cuisine");
+		             nodeAttr.setTextContent(restCuisine);
+		             getXmlString(restdata);
+		             JOptionPane.showMessageDialog(null,"Cuisine has been updated in the XML File");
 		                break;
 		               	                
-				case 4: 
-					   Price  = JOptionPane.showInputDialog("Please Enter the adjusted price");	
-		               nodeAttr = attr.getNamedItem("Price");
-		               nodeAttr.setTextContent(Price);
-		               getXmlString(restdata);
-		               JOptionPane.showMessageDialog(null,"Price has been updated in the XML File");
+			   case 4: 
+				    Price  = JOptionPane.showInputDialog("Please Enter the adjusted price");	
+		            nodeAttr = attr.getNamedItem("Price");
+		            nodeAttr.setTextContent(Price);
+		            getXmlString(restdata);
+                    JOptionPane.showMessageDialog(null,"Price has been updated in the XML File");
 		                break;   
 		                
-				case 5: 
-					   Rating  = JOptionPane.showInputDialog("Please Enter the recent ratings ");	
-		               nodeAttr = attr.getNamedItem("Rating");
-		               nodeAttr.setTextContent(Rating);
-		               getXmlString(restdata);
-		               JOptionPane.showMessageDialog(null,"Rating has been updated in the XML File");
+			  case 5: 
+				   Rating  = JOptionPane.showInputDialog("Please Enter the recent ratings ");	
+		           nodeAttr = attr.getNamedItem("Rating");
+		           nodeAttr.setTextContent(Rating);
+		           getXmlString(restdata);
+                   JOptionPane.showMessageDialog(null,"Rating has been updated in the XML File");
 		                break;   
 		                
 				case 6: 
@@ -205,7 +201,6 @@ public UpdateRestaurant()
 		               getXmlString(restdata);
 		               JOptionPane.showMessageDialog(null,"Address has been updated in the XML File");
 		                break;   
-		                
 		                           
 				case 7: 
 					   Website  = JOptionPane.showInputDialog("Please Enter the adjusted price");	
@@ -247,15 +242,15 @@ public UpdateRestaurant()
     }
     
 	
-	
 
 }
+
 private static String getXmlString(Document document)
 {
  TransformerFactory transFactory = TransformerFactory.newInstance();
  Transformer transformer;
  StringWriter sw = new StringWriter(); 
- File updatexml = new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml");
+ File updatexml = new File("C:/Users/SAMARTH/Desktop/Restaurants.xml");
  try 
  {
   transformer = transFactory.newTransformer();

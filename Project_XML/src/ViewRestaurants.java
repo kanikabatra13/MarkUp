@@ -1,7 +1,12 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;   
+import java.awt.GridLayout;
+import java.awt.ScrollPane;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -10,10 +15,13 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,14 +48,12 @@ public class ViewRestaurants {
 	
 		
 public ViewRestaurants(){
-			
-		
 		 
         try {
         	
         	// Taking the xml file as input.
           
-            FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -70,14 +76,11 @@ public ViewRestaurants(){
           //xpath variable
             XPath xPath =  XPathFactory.newInstance().newXPath();
             String items[] = new String[100];
-            
-            
-            
             String name, address, type, cuisine, price, rating, website;
             String reviewString;
             
             
-            System.out.println("----------------------------");
+           // System.out.println("----------------------------");
             
         	for (int temp = 0; temp < nList.getLength(); temp++) {
          
@@ -102,33 +105,41 @@ public ViewRestaurants(){
                          "<p>Name: " + name +
                          "<p>Address: "+ address +
                          "<p>Cusine: " + cuisine +
-                         "<p><br>";
-                         
-                     
-        			//items[temp] = "Name:"+name+ "\n Address:"+address+"\n Cuisine:"+cuisine;
+                         "<p>Price: " + price +
+                         "<p>Rating: " + rating +
+                         "<p>Website: " + website +
+                         "<p><br></html>";
+                      
         			items[temp] =  pt1 + pt2;
                     
         	}
         	
-        	
-        	              UIManager UI = new UIManager();
-        	            UI.put("OptionPane.background", Color.BLUE);
-        	             UI.put("OptionPane.messagebackground", Color.BLUE);
-        	            UI.put("Panel.background", Color.BLUE);
-        	             UIManager.put("OptionPane.background",new ColorUIResource(255,0,0));
-        	             UIManager.put("Panel.background",new ColorUIResource(255,0,0));
+        	 UIManager.put("OptionPane.background",new ColorUIResource(127, 127, 255));
+        	 UIManager.put("Panel.background",new ColorUIResource(127, 127, 255));
         	             
         	             
         	             
+             
         	JList list = new JList(items);
-            JPanel panel = new JPanel();
-            panel.add(list);
+            final JScrollPane scroll = new JScrollPane(list);  
             
-            JOptionPane.showMessageDialog(null, panel);
-            panel.setPreferredSize(new Dimension(480, 150));
-		    panel.setBorder(null);
-		   
-            
+            JPanel gui = new JPanel(new BorderLayout(3,3));
+            final JPanel panel = new JPanel();
+            scroll.setPreferredSize(new Dimension(480,250));
+            gui.add(scroll, BorderLayout.CENTER);
+            ActionListener listener = new ActionListener() {
+                            int counter = 0;
+                            public void actionPerformed(ActionEvent ae) {
+                                panel.add(new JLabel("Label " + ++counter));
+                                panel.revalidate();
+                                int height = (int)panel.getPreferredSize().getHeight();
+                                scroll.getVerticalScrollBar().setValue(height);
+                            }
+                        };
+                       
+             JOptionPane.showMessageDialog(null, gui);
+                 
+           
         }
         
         catch (FileNotFoundException e) {
