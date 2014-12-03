@@ -49,7 +49,7 @@ public class InsertRestaurant {
         try {
         	
         	// Taking the xml file as input.
-            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/MarkUp/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -201,7 +201,7 @@ public class InsertRestaurant {
       TransformerFactory transFactory = TransformerFactory.newInstance();
       Transformer transformer;
       StringWriter sw = new StringWriter(); 
-      File updatexml = new File("C:/Users/SAMARTH/Desktop/Restaurants.xml");
+      File updatexml = new File("C:/MarkUp/Restaurants.xml");
       try 
       {
        transformer = transFactory.newTransformer();

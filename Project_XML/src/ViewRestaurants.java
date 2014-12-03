@@ -53,7 +53,7 @@ public ViewRestaurants(){
         	
         	// Taking the xml file as input.
           
-            FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
+            FileInputStream file = new FileInputStream(new File("C:/MarkUp/Restaurants.xml"));
                  
             //setting up DOM elements for XML file
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -76,7 +76,7 @@ public ViewRestaurants(){
           //xpath variable
             XPath xPath =  XPathFactory.newInstance().newXPath();
             String items[] = new String[100];
-            String name, address, type, cuisine, price, rating, website;
+            String name, contact, address, type, cuisine, price, rating, website;
             String reviewString;
             
             
@@ -94,6 +94,7 @@ public ViewRestaurants(){
         			
         			name = eElement.getAttribute("Name");
         			address = eElement.getAttribute("Address");
+        			contact = eElement.getAttribute("Contact");
         			cuisine = eElement.getAttribute("Cuisine");
         			price = eElement.getAttribute("Price");
         			rating = eElement.getAttribute("Rating");
@@ -102,11 +103,12 @@ public ViewRestaurants(){
         			 String pt1 = "<html><body Name:'";
                      String pt2 =
                          "" +
-                         "<p>Name: " + name +
+                         "<p>Name:    " + name +
+                         "<p>Contact: " + contact +
                          "<p>Address: "+ address +
-                         "<p>Cusine: " + cuisine +
-                         "<p>Price: " + price +
-                         "<p>Rating: " + rating +
+                         "<p>Cusine:  " + cuisine +
+                         "<p>Price:   " + price +
+                         "<p>Rating:  " + rating +
                          "<p>Website: " + website +
                          "<p><br></html>";
                       

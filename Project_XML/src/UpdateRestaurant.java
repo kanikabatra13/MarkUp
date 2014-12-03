@@ -52,7 +52,7 @@ public UpdateRestaurant()
     	
     	// Taking the xml file as input.
       
-        FileInputStream file = new FileInputStream(new File("C:/Users/SAMARTH/Desktop/Restaurants.xml"));
+        FileInputStream file = new FileInputStream(new File("C:/MarkUp/Restaurants.xml"));
              
         //setting up DOM elements for XML file
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -211,12 +211,24 @@ public UpdateRestaurant()
 		                break;   
 				case 8: 
 					   review  = JOptionPane.showInputDialog("Please write your review");	
-					  /* Node rNode = nNode.getNextSibling();
-					   Element reviews = (Element) rNode;
+					    Node pNode = nNode.getParentNode();
+					    NodeList rNodeList = pNode.getChildNodes();
+					    //NodeList rNodeList = restdata.getElementsByTagName("Reviews");
+					    Element reviews = null;
+					    for(int temp = 0; temp < nList.getLength(); temp++)
+					    {
+					    	if(rNodeList.item(temp).getNodeName().equals("Reviews"))
+					    	{
+					          reviews = (Element) rNodeList.item(temp);
+					         break;
+					    	}
+					    }
+					    
 					   Element reviewEl = restdata.createElement("review");
+					   reviewEl.setTextContent(review);
 					   reviews.appendChild(reviewEl);
 		               getXmlString(restdata);
-		               JOptionPane.showMessageDialog(null,"Review has been added!");*/
+		                JOptionPane.showMessageDialog(null,"Review has been added!");
 		                break;           
 				default: choice = 0;
 				JOptionPane.showMessageDialog(null,"Please enter a number: 1 - 8");
@@ -250,7 +262,7 @@ private static String getXmlString(Document document)
  TransformerFactory transFactory = TransformerFactory.newInstance();
  Transformer transformer;
  StringWriter sw = new StringWriter(); 
- File updatexml = new File("C:/Users/SAMARTH/Desktop/Restaurants.xml");
+ File updatexml = new File("C:/MarkUp/Restaurants.xml");
  try 
  {
   transformer = transFactory.newTransformer();
