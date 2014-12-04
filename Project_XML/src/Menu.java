@@ -72,7 +72,7 @@ public Menu()
 	    UIManager.put("OptionPane.minimumSize",new Dimension(480, 150)); 
 		UIManager.put("OptionPane.background",new ColorUIResource(127, 127, 255));
 	    UIManager.put("Panel.background",new ColorUIResource(127, 127, 255));
-	    JOptionPane.showMessageDialog(null,"Character is not a valid choice Please Enter a number: 1 - 5");
+	    JOptionPane.showMessageDialog(null,"Character is not a valid choice Please Enter a number: 1 - 6");
    }
    
    // general catch block for all exceptions
