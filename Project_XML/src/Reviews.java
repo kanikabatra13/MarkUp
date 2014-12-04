@@ -52,7 +52,7 @@ public Reviews() {
     	
     	// Taking the xml file as input.
       
-        FileInputStream file = new FileInputStream(new File("C:/Users/cguliani/Desktop/MarkUp/Restaurants.xml"));
+        FileInputStream file = new FileInputStream(new File("C:/MarkUp/Restaurants.xml"));
              
         //setting up DOM elements for XML file
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -121,7 +121,7 @@ public Reviews() {
          JFrame frame = new JFrame("Input Dialog Example 3");
          
          String response = (String) JOptionPane.showInputDialog(frame, "Please Select the Restaurant from the list you want to see the reviews for",
-         		"Update Restaurant", JOptionPane.QUESTION_MESSAGE,null,items,items[0]);
+         		"Check Reviews!", JOptionPane.QUESTION_MESSAGE,null,items,items[0]);
          panel.setPreferredSize(new Dimension(480, 150));
  	    panel.setBorder(null);
  	   for (int temp3 = 0; temp3 < nList.getLength(); temp3++) {
@@ -137,61 +137,64 @@ public Reviews() {
 				    for(int temp = 0; temp < nList.getLength(); temp++)
 			
 				    {
-				    	System.out.println(rNodeList.item(temp).getNodeName());
+				    	
 				    	if(rNodeList.item(temp).getNodeName().equals("Reviews"))
 				    	{
 				    	
 						    NodeList rNodeList2 = rNodeList.item(temp).getChildNodes();
 						    for(int temp2 = 0; temp2 < rNodeList2.getLength(); temp2++)
 						    {
-						    	if(rNodeList.item(temp2).getNodeName().equals("review"))
-						    	{
-					    		String review = rNodeList.item(temp).getTextContent();
+						    	//if(rNodeList2.item(temp2).getNodeName().equals("review"))
+						    	//{
+					    		String review = rNodeList2.item(temp2).getTextContent();
 					    		System.out.println(review);
 					    		 String pt1 = "<html><body Reviews:'";
 					    		 String pt2 =
 					                     "" +
 					                     "<p>" + review +
 					                     
-	                                      "<p><br></html>";
+	                                      "<p></html>";
 					                     
-					                 items2[temp] = pt1 + pt2; 
-					                 break;
+					                 items2[temp2] = pt1 + pt2; 
+					                 
 						       }
-				    		
+						    JList list2 = new JList(items2);
+				            final JScrollPane scroll = new JScrollPane(list2);  
+				            
+				            JPanel gui = new JPanel(new BorderLayout(3,3));
+				            final JPanel panel2 = new JPanel();
+				            scroll.setPreferredSize(new Dimension(480,250));
+				            gui.add(scroll, BorderLayout.CENTER);
+				            ActionListener listener = new ActionListener() {
+				                            int counter = 0;
+				                            public void actionPerformed(ActionEvent ae) {
+				                                panel2.add(new JLabel("Label " + ++counter));
+				                                panel2.revalidate();
+				                                int height = (int)panel2.getPreferredSize().getHeight();
+				                                scroll.getVerticalScrollBar().setValue(height);
+				                            }
+				                        };
+				                       
+				             JOptionPane.showMessageDialog(null, gui);
+				    		  break;
 				        	}
     			
     		          }
     		
 	                }
  	   }
+	
+
  	   
     		
-    		JList list2 = new JList(items2);
-            final JScrollPane scroll = new JScrollPane(list2);  
-            
-            JPanel gui = new JPanel(new BorderLayout(3,3));
-            final JPanel panel2 = new JPanel();
-            scroll.setPreferredSize(new Dimension(480,250));
-            gui.add(scroll, BorderLayout.CENTER);
-            ActionListener listener = new ActionListener() {
-                            int counter = 0;
-                            public void actionPerformed(ActionEvent ae) {
-                                panel2.add(new JLabel("Label " + ++counter));
-                                panel2.revalidate();
-                                int height = (int)panel2.getPreferredSize().getHeight();
-                                scroll.getVerticalScrollBar().setValue(height);
-                            }
-                        };
-                       
-             JOptionPane.showMessageDialog(null, gui);
+    		
                     
                    
          
- 	   }      
+ 	      
        
  	   
-	}
+}
     
     catch (FileNotFoundException e) {
         e.printStackTrace();

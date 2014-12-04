@@ -16,8 +16,9 @@ public Menu()
   message += "\n" + "  1 - Create a entry for new restaurants";
   message += "\n" + "  2 - View the list of restaurants";
   message += "\n" + "  3 - Manipulate entry for a restaurant";	
-  message += "\n" + "  4 - Delete a restaurant";	
-  message += "\n" + "  5 - Exit Program" + "\n" + " ";
+  message += "\n" + "  4 - Delete a restaurant";
+  message += "\n" + "  5 - See Reviews";
+  message += "\n" + "  6 - Exit Program" + "\n" + " ";
 
   
   char ansmenu ='Y';
@@ -46,7 +47,12 @@ public Menu()
 	case 4:  
 		     DeleteRestaurant  dt = new DeleteRestaurant();
 		     break;
+		     
 	case 5:  
+	     Reviews  rt = new Reviews();
+	     break;
+		     
+	case 6:  
 		     ansmenu = 'N';  System.exit(1);
              break;
              

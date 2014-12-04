@@ -203,7 +203,7 @@ public UpdateRestaurant()
 		                break;   
 		                           
 				case 7: 
-					   Website  = JOptionPane.showInputDialog("Please Enter the adjusted price");	
+					   Website  = JOptionPane.showInputDialog("Please Enter the adjusted Website");	
 		               nodeAttr = attr.getNamedItem("href");
 		               nodeAttr.setTextContent(Website);
 		               getXmlString(restdata);
